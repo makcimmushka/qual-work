@@ -1,0 +1,13 @@
+<div *ngIf="requests.length; else noRequests" class="requests-list">
+  <app-request
+    *ngFor="let request of requests"
+    [request]="request"
+    [user]="user"
+    (changedRequest)="onRequestChange($event)"
+  >
+  </app-request>
+</div>
+
+<ng-template #noRequests>
+  <h2 *ngIf="isLoaded">Наразі в системі нема актуальних запитів 🙁</h2>
+</ng-template>

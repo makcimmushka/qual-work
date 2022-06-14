@@ -1,0 +1,41 @@
+<div class="home-page" *ngIf="user">
+  <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+  <h2>Домашня сторінка</h2>
+
+  <form [formGroup]="homeForm" (ngSubmit)="onSubmit()" autocomplete="off">
+    <div class="form-group">
+      <label for="phone">Номер телефону:</label>
+      <input type="text" formControlName="phone" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+
+      <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+        <div *ngIf="f.phone.errors.required">Введіть номер телефону</div>
+        <div *ngIf="f.phone.errors.pattern">Невірний формат номеру телефону</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="role">Роль:</label>
+      <input type="role" formControlName="role" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.role.errors }" style="background-color: white;" />
+    </div>
+
+    <div class="form-group">
+      <label for="name">Ім'я:</label>
+      <input type="name" formControlName="name" class="form-control"
+        [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+
+      <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+        <div *ngIf="f.name.errors.required">Введіть ім'я</div>
+        <div *ngIf="f.name.errors.minlength">Ім'я має бути мінімум 6 символів</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button [disabled]="loading" class="btn btn-primary">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        Оновити профіль
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand navbar-dark bg-primary" *ngIf="currentUser">
+  <div class="navbar-nav">
+    <a class="nav-item nav-link" style="color: white;" routerLink="/">Домашня сторінка</a>
+    <a class="nav-item nav-link" style="color: white;" routerLink="/all-requests" *ngIf="isVolunteer()">Перегляд запитів</a>
+    <a class="nav-item nav-link" style="color: white;" routerLink="/make-request" *ngIf="isUser()">Сформувати запит</a>
+    <a class="nav-item nav-link" style="color: white;" routerLink="/my-requests">Мої запити</a>
+    <a class="nav-item nav-link btn-out" style="color: white; cursor: pointer;" (click)="logOut()">Вийти</a>
+  </div>
+</nav>
+
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 offset-sm-0">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

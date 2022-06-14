@@ -1,0 +1,59 @@
+<div *ngIf="error" class="alert alert-danger">{{error}}</div>
+<h2>Реєстрація</h2>
+
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" autocomplete="off">
+  <div class="form-group">
+    <label for="phone">Номер телефону:</label>
+    <input type="text" formControlName="phone" class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+
+    <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+      <div *ngIf="f.phone.errors.required">Введіть номер телефону</div>
+      <div *ngIf="f.phone.errors.pattern">Невірний формат номеру телефону</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Пароль:</label>
+    <input type="password" formControlName="password" class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+
+    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+      <div *ngIf="f.password.errors.required">Введіть пароль</div>
+      <div *ngIf="f.password.errors.minlength">Пароль має бути мінімум 6 символів</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="name">Ім'я:</label>
+    <input type="name" formControlName="name" class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+
+    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+      <div *ngIf="f.name.errors.required">Введіть ім'я</div>
+      <div *ngIf="f.name.errors.minlength">Ім'я має бути мінімум 6 символів</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="role">Роль:</label>
+    <select formControlName="role" class="custom-select" [ngClass]="{ 'is-invalid': submitted && f.role.errors }">
+      <option
+        *ngFor="let role of Role"
+        [ngValue]="role"
+      >{{role}}</option>
+    </select>
+
+    <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
+      <div>Оберіть вашу роль</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <button [disabled]="loading" class="btn btn-primary">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+      Реєстрація
+    </button>
+    <a routerLink="/login" class="btn btn-link">Відмінити</a>
+  </div>
+</form>

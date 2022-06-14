@@ -1,0 +1,10 @@
+.requests-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+
+.requests-list > div {
+  //flex: 0 50%; /* or - flex: 0 50% - or - flex-basis: 50% - */
+  margin-bottom: 10px;
+}

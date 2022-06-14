@@ -1,0 +1,86 @@
+<div class="make-request-item">
+  <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+  <form [formGroup]="makeRequestForm" (ngSubmit)="createRequest()" autocomplete="off">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="phone">Номер телефону</label>
+        <input
+          type="phone"
+          class="form-control"
+          formControlName="phone"
+          id="phone"
+          placeholder="+380..."
+          [ngClass]="{ 'is-invalid': submitted && f.phone.errors }"
+        >
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="need">Тип потреби*</label>
+        <select
+          id="need"
+          class="form-control"
+          formControlName="need"
+          [ngClass]="{ 'is-invalid': submitted && f.need.errors }"
+        >
+          <option selected>житло 🏘️</option>
+          <option>їжа 🍲</option>
+          <option>гроші 💰</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="heading">Заголовок*</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="heading"
+        id="heading"
+        placeholder="Введіть заголовок..."
+        [ngClass]="{ 'is-invalid': submitted && f.heading.errors }"
+      >
+    </div>
+
+    <div class="form-group">
+      <label for="description">Потреба*</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="description"
+        id="description"
+        placeholder="Введіть вашу потребу..."
+        [ngClass]="{ 'is-invalid': submitted && f.description.errors }"
+      >
+    </div>
+
+    <div class="form-row">
+
+      <div class="form-group col-md-6">
+        <label for="city">Місто</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="city"
+          id="city"
+          placeholder="Введіть ваше місто..."
+          [ngClass]="{ 'is-invalid': submitted && f.city.errors }"
+        >
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="disctrict">Район</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="district"
+          id="district"
+          placeholder="Введіть ваш район..."
+          [ngClass]="{ 'is-invalid': submitted && f.district.errors }"
+        >
+      </div>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary">Сформувати запит</button>
+  </form>
+</div>

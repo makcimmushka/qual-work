@@ -1,0 +1,15 @@
+<div class="card request-item" style="width: 20rem; margin-bottom: 50px; margin-right: 50px">
+  <div class="card-body">
+    <h5 class="card-title">{{request.heading}}</h5>
+    <p class="card-text">{{request.description}}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><span style="font-weight: bold;">Місто:</span> {{request.city || 'Не вказано'}}</li>
+    <li class="list-group-item"><span style="font-weight: bold;">Район:</span> {{request.district || 'Не вказано'}}</li>
+    <li class="list-group-item"><span style="font-weight: bold;">Потреба:</span> {{request.need}}</li>
+    <li class="list-group-item"><span style="font-weight: bold;">Номер телефону:</span> Приховано</li>
+  </ul>
+  <div class="card-body">
+    <button type="button" style="width: 125px;" class="btn btn-success" (click)="assignRequest()">Взяти</button>
+  </div>
+</div>

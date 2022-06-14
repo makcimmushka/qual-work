@@ -1,0 +1,11 @@
+.vscode/
+coverage/
+**/*.spec.ts
+.editorconfig
+.eslint*
+.gitignore
+.nvmrc
+*.sh
+*.yml
+jest.*
+*.md

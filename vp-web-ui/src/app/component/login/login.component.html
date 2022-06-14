@@ -1,0 +1,33 @@
+<div *ngIf="error" class="alert alert-danger">{{error}}</div>
+<div *ngIf="success" class="alert alert-success">{{success}}</div>
+<h2>Логін</h2>
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
+  <div class="form-group">
+    <label for="phone">Номер телефону:</label>
+    <input type="text" formControlName="phone" class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+
+    <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+      <div *ngIf="f.phone.errors.required">Введіть номер телефону</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Пароль:</label>
+    <input type="password" formControlName="password" class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+
+    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+      <div *ngIf="f.password.errors.required">Введіть пароль</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <button [disabled]="loading" class="btn btn-primary">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+      Ввійти
+    </button>
+    <a routerLink="/register" class="btn btn-link">Реєстрація</a>
+  </div>
+</form>
